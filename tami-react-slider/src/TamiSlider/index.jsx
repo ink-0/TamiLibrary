@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Wrap, ViewArea, Controller, SlideBox, SlideList } from "./index.style";
+import React, { useState, useEffect } from 'react';
+import { Wrap, ViewArea, Controller, SlideBox, SlideList } from './index.style';
 
 const TamiSlider = () => {
-  const transitionDefault = "all .5s";
+  const transitionDefault = 'all .5s';
   const panelWidth = 200;
   const panelCount = 3;
 
@@ -14,37 +14,38 @@ const TamiSlider = () => {
     if (moving) return;
     setX((prevX) => prevX + direction * 200);
     setMoving(true);
+    console.log('this', this);
   };
 
   const onTransitionEnd = () => {
     setMoving(false);
     if (x === -panelWidth * (panelCount + 1)) {
-      console.log("💓panelCount는", panelCount);
-      setTransitionValue("none");
+      console.log('💓panelCount는', panelCount);
+      setTransitionValue('none');
       setX(-panelWidth);
     } else if (x === 0) {
-      console.log("💙panelCount는", panelCount);
+      console.log('💙panelCount는', panelCount);
 
-      setTransitionValue("none");
+      setTransitionValue('none');
       setX(-panelWidth * panelCount);
     }
   };
 
   useEffect(() => {
-    if (trasitionValue === "none") setTransitionValue(transitionDefault);
+    if (trasitionValue === 'none') setTransitionValue(transitionDefault);
   }, [x]);
 
   const ulStyles = {
-    position: "absolute",
-    left: "200px",
+    position: 'absolute',
+    left: '200px',
     transform: `translate3d(${x}px, 0, 0)`,
     transition: trasitionValue,
-    display: "flex",
-    flexDirection: "row",
-    listStyle: "none",
+    display: 'flex',
+    flexDirection: 'row',
+    listStyle: 'none',
   };
   const liStyle = {
-    width: "200px",
+    width: '200px',
   };
 
   return (
@@ -84,3 +85,5 @@ const TamiSlider = () => {
 };
 
 export default TamiSlider;
+
+//https://kyounghwan01.github.io/blog/etc/make-npm/publish-npm-react-component/
